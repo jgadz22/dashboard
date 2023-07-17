@@ -6,8 +6,16 @@ import FullscreenExitOutlinedIcon from "@mui/icons-material/FullscreenExitOutlin
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import { useContext } from "react";
+import { DarkModeContext } from "../../context/DarkModeContext";
 
 const Navbar = () => {
+  const { darkMode, dispatch } = useContext(DarkModeContext);
+  const toggleDarkMode = () => {
+    dispatch({ type: "TOGGLE" });
+  };
+
   return (
     <div className="navbar">
       <div className="wrapper">
@@ -21,7 +29,14 @@ const Navbar = () => {
             English
           </div>
           <div className="item">
-            <DarkModeOutlinedIcon className="icon" />
+            {darkMode ? (
+              <LightModeOutlinedIcon
+                className="icon"
+                onClick={toggleDarkMode}
+              />
+            ) : (
+              <DarkModeOutlinedIcon className="icon" onClick={toggleDarkMode} />
+            )}
           </div>
           <div className="item">
             <FullscreenExitOutlinedIcon className="icon" />
@@ -38,7 +53,11 @@ const Navbar = () => {
             <ListOutlinedIcon className="icon" />
           </div>
           <div className="item">
-            <img src="https://jgadz22.github.io/my-portfolio/static/media/JGG-logo.97b1bd5b8c60c577d71e.png" alt="" className="avatar"/>
+            <img
+              src="https://jgadz22.github.io/my-portfolio/static/media/JGG-logo.97b1bd5b8c60c577d71e.png"
+              alt=""
+              className="avatar"
+            />
           </div>
         </div>
       </div>

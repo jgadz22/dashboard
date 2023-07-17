@@ -21,7 +21,7 @@ const Single = () => {
                 className="itemImg"
               />
               <div className="details">
-                <h1 className="itemTitle">Snow</h1>
+                <h1 className="itemTitle">Snowden San Jose</h1>
                 <div className="detailItem">
                   <span className="itemKey">Email: </span>
                   <span className="itemValue">1snow@gmail.com</span>
@@ -42,7 +42,7 @@ const Single = () => {
             </div>
           </div>
           <div className="right">
-            <Chart />
+            <Chart aspect={3/1} />
           </div>
         </div>
         <div className="bottom">

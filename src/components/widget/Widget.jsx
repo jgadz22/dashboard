@@ -29,7 +29,7 @@ const Widget = ({ type }) => {
       data = {
         title: "ORDERS",
         isMoney: false,
-        link: "See all users",
+        link: "See all orders",
         icon: <ShoppingCartOutlinedIcon className="icon" style={{
           color: "goldenrod",
           backgroundColor: "rgba(218, 165, 32, 0.2)",

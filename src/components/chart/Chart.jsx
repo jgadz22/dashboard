@@ -8,7 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const Chart = () => {
+const Chart = ({ aspect }) => {
   const data = [
     {
       name: "January",
@@ -43,7 +43,7 @@ const Chart = () => {
   return (
     <div className="chart">
         <div className="title">Last 7 Months (Revenue)</div>
-      <ResponsiveContainer width="100%" aspect={3/1}>
+      <ResponsiveContainer width="100%" aspect={aspect}>
         <AreaChart
           width={730}
           height={250}
@@ -52,8 +52,8 @@ const Chart = () => {
         >
           <defs>
             <linearGradient id="total" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+              <stop offset="5%" stopColor="rgb(6, 145, 6)" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="rgb(6, 145, 6)" stopOpacity={0} />
             </linearGradient>
           </defs>
           <XAxis dataKey="name" stroke="gray" />

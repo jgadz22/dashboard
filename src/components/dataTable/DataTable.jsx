@@ -1,28 +1,37 @@
-import "./dataTable.scss"
-import { DataGrid } from '@mui/x-data-grid';
-import { userColumns, userRows } from '../../DataTableSource';
+import "./dataTable.scss";
+import { DataGrid } from "@mui/x-data-grid";
+import { userColumns, userRows } from "../../DataTableSource";
+import { Link } from "react-router-dom";
 
-const DataTable = () => {
-
-const actionColumn = [
-  {
-    field: "action",
-    headerName: "Action",
-    width: 200,
-    renderCell: () => {
-      return (
-        <div className="cellAction">
-          <div className="viewButton">View</div>
-          <div className="deleteButton">Delete</div>
-        </div>
-      );
+const DataTable = ({ title }) => {
+  const actionColumn = [
+    {
+      field: "action",
+      headerName: "Action",
+      width: 200,
+      renderCell: (params) => {
+        const userId = params.row.id;
+        return (
+          <div className="cellAction">
+            <Link to={`/users/${userId}`} style={{ textDecoration: "none" }}>
+              <div className="viewButton">View</div>
+            </Link>
+            <div className="deleteButton">Delete</div>
+          </div>
+        );
+      },
     },
-  }
-]
+  ];
 
   return (
-    <div className='dataTable'>
-      <DataGrid
+    <div className="dataTable">
+      <div className="dataTableTitle">
+        List of {title}
+        <Link to="new" className="link">
+          Add New
+        </Link>
+      </div>
+      <DataGrid className="dataGrid"
         rows={userRows}
         columns={userColumns.concat(actionColumn)}
         initialState={{
@@ -34,7 +43,7 @@ const actionColumn = [
         checkboxSelection
       />
     </div>
-  )
-}
+  );
+};
 
-export default DataTable
+export default DataTable;
